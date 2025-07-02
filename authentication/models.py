@@ -29,4 +29,3 @@ class CustomUser(AbstractUser):
 
 
 
-# git commit -m'login and register using jwt'
