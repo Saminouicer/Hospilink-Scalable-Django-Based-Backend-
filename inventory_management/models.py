@@ -6,6 +6,13 @@ class Medicine(models.Model):
     description=models.TextField(blank=True)
     category=models.CharField(max_length=100)
     created_at=models.DateTimeField(auto_now_add=True)
+    low_stock_threshold = models.PositiveIntegerField(default=10)
+
+    def total_quantity(self):
+        return sum(batch.quantity for batch in self.batches.all())
+
+    def is_low_stock(self):
+        return self.total_quantity() < self.low_stock_threshold
 
     def __str__(self):
         return self.name
