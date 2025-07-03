@@ -1,3 +1,4 @@
+from datetime import date, timedelta
 from django.db import models
 # Create your models here.
 
@@ -24,6 +25,15 @@ class Batch(models.Model):
     expiration_date = models.DateField()
     received_date = models.DateField(auto_now_add=True)
     is_delivered = models.BooleanField(default=False)
+
+
+    def is_expired(self):
+        return self.expiration_date and self.expiration_date < date.today()
+
+    def is_expiring_soon(self, days=30):
+        if not self.expiration_date:
+            return False
+        return date.today() <= self.expiration_date <= date.today() + timedelta(days=days)
 
     def __str__(self):
         return self.medicine.name
