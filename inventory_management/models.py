@@ -8,6 +8,7 @@ class Medicine(models.Model):
     category=models.CharField(max_length=100)
     created_at=models.DateTimeField(auto_now_add=True)
     low_stock_threshold = models.PositiveIntegerField(default=10)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def total_quantity(self):
         return sum(batch.quantity for batch in self.batches.all())
@@ -25,6 +26,7 @@ class Batch(models.Model):
     expiration_date = models.DateField()
     received_date = models.DateField(auto_now_add=True)
     is_delivered = models.BooleanField(default=False)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     def is_expired(self):

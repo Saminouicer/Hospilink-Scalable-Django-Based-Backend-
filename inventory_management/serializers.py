@@ -22,9 +22,10 @@ class BatchSerializer(serializers.ModelSerializer):
             'received_date',
             'is_delivered',
             'is_expired',         
-            'is_expiring_soon', 
+            'is_expiring_soon',
+            'updated_at',
         ]
-        read_only_fields = ['id', 'received_date', 'medicine_name', 'is_expired', 'is_expiring_soon']
+        read_only_fields = ['id', 'received_date', 'medicine_name', 'is_expired', 'is_expiring_soon','updated_at']
 
     def get_is_expired(self, obj):
         return obj.is_expired()
@@ -50,8 +51,9 @@ class MedicineSerializer(serializers.ModelSerializer):
             'low_stock_threshold',
             'total_quantity',
             'is_low_stock',
+            'updated_at'
         ]
-        read_only_fields = ['id', 'created_at', 'total_quantity', 'is_low_stock']
+        read_only_fields = ['id', 'created_at', 'total_quantity', 'is_low_stock','updated_at']
 
     def get_total_quantity(self, obj):
         return obj.total_quantity()
