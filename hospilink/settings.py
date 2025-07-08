@@ -17,7 +17,7 @@ from pathlib import Path
 
 
 
-
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True  # for development only
 
