@@ -17,7 +17,12 @@ from pathlib import Path
 
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'hospilink-scalable-django-based-backend.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 CORS_ALLOW_ALL_ORIGINS = True  # for development only
 
