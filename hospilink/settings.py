@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'authentication',
     'inventory_management',
+    'medicine_request',
     'corsheaders',
 ]
 
@@ -79,7 +80,8 @@ REST_FRAMEWORK = {
 #token lifetimes
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=300),
+    # "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
      #"REFRESH_TOKEN_LIFETIME": timedelta(minutes=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,  # or True depending on your needs

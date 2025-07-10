@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 from django.db import models
+from medicine_request.models import Supplier
 # Create your models here.
 
 class Medicine(models.Model):
@@ -9,6 +10,7 @@ class Medicine(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     low_stock_threshold = models.PositiveIntegerField(default=10)
     updated_at = models.DateTimeField(auto_now=True)
+    suppliers = models.ManyToManyField(Supplier, through='medicine_request.SupplierMedicine', related_name='medicines')
 
     def total_quantity(self):
         return sum(batch.quantity for batch in self.batches.all())

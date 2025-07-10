@@ -5,6 +5,8 @@ from .models import Batch, Medicine
 
 
 
+
+
 class BatchSerializer(serializers.ModelSerializer):
 
     medicine_name = serializers.CharField(source='medicine.name', read_only=True)
@@ -51,9 +53,10 @@ class MedicineSerializer(serializers.ModelSerializer):
             'low_stock_threshold',
             'total_quantity',
             'is_low_stock',
-            'updated_at'
+            'updated_at',
+            'suppliers'
         ]
-        read_only_fields = ['id', 'created_at', 'total_quantity', 'is_low_stock','updated_at']
+        read_only_fields = ['id', 'created_at', 'total_quantity', 'is_low_stock','updated_at','suppliers']
 
     def get_total_quantity(self, obj):
         return obj.total_quantity()
